@@ -7,6 +7,7 @@ const connection = mysql.createConnection({
     password: '',
     database: 'sqlTest'
 });
+
 const {
     isEmail
 } = require('./utils');
@@ -20,10 +21,27 @@ app.get('/user', (req, res) => {
         res.header('Access-Control-Allow-Origin', '*');
         connection.query(`SELECT * FROM users WHERE email='${email}' or name='${name}'`, (error, rows, fields) => {
             if (error) return res.json({ error });
-            rows.forEach(row => delete row.password);
+            rows.forEach(row => {
+                delete row.password;
+                delete row.id;
+            });
             res.json(rows);
         });
-    } else res.json({ error: 'request needs query.email or query.name' });
+    } else res.json({ error: 'request needs email OR name' });
+});
+
+app.get('/sign', (req, res) => {
+    const {
+        email,
+        password
+    } = req.query;
+    if (email && password) {
+        res.header('Access-Control-Allow-Origin', '*');
+        connection.query(`SELECT * FROM users WHERE password='${password}' AND name='${name}'`, (error, rows, fields) => {
+            if (error) return res.json({ error });
+            res.json(rows);
+        });
+    } else res.json({ error: 'request needs password and name' });
 });
 
 app.delete('/user', (req, res) => {
@@ -37,7 +55,7 @@ app.delete('/user', (req, res) => {
             if (error) return res.json({ error });
             res.json(rows);
         });
-    } else res.json({ error: 'request needs query.name & query.password' });
+    } else res.json({ error: 'request needs name & password' });
 });
 
 app.post('/user', (req, res) => {
@@ -52,7 +70,7 @@ app.post('/user', (req, res) => {
             if (error) return res.json({ error });
             res.json(rows);
         });
-    } else res.json({ error: 'request needs query.name & isEmail(query.email) & query.password' });
+    } else res.json({ error: 'request needs name & isEmail(email) & password' });
 });
 
 app.put('/user', (req, res) => {
@@ -61,14 +79,13 @@ app.put('/user', (req, res) => {
         email,
         password        
     } = req.query;
-    console.log(email);
     if (name && isEmail(email) && password) {
         res.header('Access-Control-Allow-Origin', '*');
         connection.query(`UPDATE users SET email='${email}' WHERE name='${name}' AND password='${password}'`, (error, rows, fields) => {
             if (error) return res.json({ error });
             res.json(rows);
         });
-    } else res.json({ error: 'request needs query.name & isEmail(query.email) & query.password' });
+    } else res.json({ error: 'request needs name & isEmail(email) & password' });
 });
 
 app.listen(5555);

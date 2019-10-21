@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="log">
+        <a href="#in"> Sign in if you have an account </a>
+        <a href="#up"> Sign up to create one</a>
+    </section>
+    <section id="in">
+        <form action="http://localhost:5555/user" method="GET">
+            <label for="in-email">Email</label>
+            <input type="email" name="email" id="in-email">
+            <label for="in-name">Name</label>
+            <input type="name" name="name" id="in-name">
+            <label for="in-password">Password</label>
+            <input type="password" password="password" id="in-password">
+            <p class="error-message"></p>
+            <button type="submit">Sign in</button>
+        </form>
+    </section>
+    <section id="up">
+        <form action="http://localhost:5555/user" method="POST">
+            <label for="up-email">Email</label>
+            <input type="email" name="email" id="up-email">
+            <label for="up-name">Name</label>
+            <input type="name" name="name" id="up-name">
+            <label for="up-password">Password</label>
+            <input type="password" password="password" id="up-password">
+            <p class="error-message"></p>
+            <button type="submit">Sign up</button>
+        </form>
+    </section>
+    <section id="dashboard">
+        <div class="user-details">
+            <button id="sign-out">Sign out</button>
+            <p class="error-message"></p>
+            <table id="details"></table>
+            <button id="delete-user">Delete user</button>
+            <!-- edit, delete, sign-out -->
+
+        </div>
+    </section>
+    <script src="./methods/get.js"></script>
+    <script src="./methods/post.js"></script>
+    <script src="./methods/put.js"></script>
+    <script src="./methods/delete.js"></script>
+</body>
+</html>
