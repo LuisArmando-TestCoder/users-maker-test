@@ -9,11 +9,15 @@
 </head>
 <body>
     <section id="log">
-        <a href="#in"> Sign in if you have an account </a>
-        <a href="#up"> Sign up to create one</a>
+        <h1>Init - User management</h1>
+        <div class="log__options">
+            <a href="#in" class="options__option"> Sign in </a>
+            <a href="#up" class="options__option"> Or register </a>
+        </div>
     </section>
     <section id="in">
-        <form action="http://localhost:5555/user" method="GET">
+        <h2>Sign in <sup>aka</sup> Log in</h2>
+        <form>
             <label for="in-email">Email</label>
             <input type="email" name="email" id="in-email">
             <label for="in-name">Name</label>
@@ -21,11 +25,13 @@
             <label for="in-password">Password</label>
             <input type="password" password="password" id="in-password">
             <p class="error-message"></p>
-            <button type="submit">Sign in</button>
+            <button type="submit" id="in-submit">Sign in</button>
+            <a href="#up">Wanna make an account?</a>
         </form>
     </section>
     <section id="up">
-        <form action="http://localhost:5555/user" method="POST">
+        <h2>Sign up <sup>aka</sup> Register</h2>
+        <form>
             <label for="up-email">Email</label>
             <input type="email" name="email" id="up-email">
             <label for="up-name">Name</label>
@@ -33,22 +39,29 @@
             <label for="up-password">Password</label>
             <input type="password" password="password" id="up-password">
             <p class="error-message"></p>
-            <button type="submit">Sign up</button>
+            <button type="submit" id="up-submit">Sign up</button>
+            <a href="#in">Wanna log in?</a>
         </form>
     </section>
     <section id="dashboard">
-        <div class="user-details">
-            <button id="sign-out">Sign out</button>
-            <p class="error-message"></p>
-            <table id="details"></table>
-            <button id="delete-user">Delete user</button>
-            <!-- edit, delete, sign-out -->
-
+        <div class="details">
+            <div>
+                <button id="sign-out">Sign out</button>
+                <p class="error-message"></p>
+                <ul id="user"></ul>
+                <button id="delete-user">Delete your user</button>
+            </div>
+            <div>
+                <form>
+                    <label for="search-users-name">User</label>
+                    <input type="search" name="name" id="search-users-name">
+                    <label for="search-users-email">Email</label>
+                    <input type="search" name="email" id="search-users-email">
+                </form>
+                <ul id="users"></ul>
+            </div>
         </div>
     </section>
-    <script src="./methods/get.js"></script>
-    <script src="./methods/post.js"></script>
-    <script src="./methods/put.js"></script>
-    <script src="./methods/delete.js"></script>
+    <script src="./js/sign.js"></script>
 </body>
 </html>

@@ -19,12 +19,8 @@ app.get('/user', (req, res) => {
     } = req.query;
     if (email || name) {
         res.header('Access-Control-Allow-Origin', '*');
-        connection.query(`SELECT * FROM users WHERE email='${email}' or name='${name}'`, (error, rows, fields) => {
+        connection.query(`SELECT email, name FROM users WHERE (email REGEXP '${email}') OR (name REGEXP '${name}')`, (error, rows, fields) => {
             if (error) return res.json({ error });
-            rows.forEach(row => {
-                delete row.password;
-                delete row.id;
-            });
             res.json(rows);
         });
     } else res.json({ error: 'request needs email OR name' });
