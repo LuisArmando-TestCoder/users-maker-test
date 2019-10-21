@@ -12,14 +12,20 @@ const {
     isEmail
 } = require('./utils');
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+    next();
+});
+
 app.get('/user', (req, res) => {
     const {
         email,
         name
     } = req.query;
     if (email || name) {
-        res.header('Access-Control-Allow-Origin', '*');
-        connection.query(`SELECT email, name FROM users WHERE (email REGEXP '${email}') OR (name REGEXP '${name}')`, (error, rows, fields) => {
+        connection.query(`SELECT email, name FROM users WHERE (email REGEXP '${email}') OR (name REGEXP '${name}')`,
+        (error, rows, fields) => {
             if (error) return res.json({ error });
             res.json(rows);
         });
@@ -32,12 +38,12 @@ app.get('/sign', (req, res) => {
         password
     } = req.query;
     if (email && password) {
-        res.header('Access-Control-Allow-Origin', '*');
-        connection.query(`SELECT * FROM users WHERE password='${password}' AND name='${name}'`, (error, rows, fields) => {
+        connection.query(`SELECT * FROM users WHERE password='${password}' AND email='${email}'`,
+        (error, rows, fields) => {
             if (error) return res.json({ error });
             res.json(rows);
         });
-    } else res.json({ error: 'request needs password and name' });
+    } else res.json({ error: 'request needs password and email' });
 });
 
 app.delete('/user', (req, res) => {
@@ -46,8 +52,8 @@ app.delete('/user', (req, res) => {
         password
     } = req.query;
     if (name && password) {
-        res.header('Access-Control-Allow-Origin', '*');
-        connection.query(`DELETE FROM users WHERE name='${name}' AND password='${password}'`, (error, rows, fields) => {
+        connection.query(`DELETE FROM users WHERE name='${name}' AND password='${password}'`,
+        (error, rows, fields) => {
             if (error) return res.json({ error });
             res.json(rows);
         });
@@ -61,8 +67,8 @@ app.post('/user', (req, res) => {
         password
     } = req.query;
     if (name && isEmail(email) && password) {
-        res.header('Access-Control-Allow-Origin', '*');
-        connection.query(`INSERT INTO users (name, email, password) VALUES ('${name}', '${email}', '${password}')`, (error, rows, fields) => {
+        connection.query(`INSERT INTO users (name, email, password) VALUES ('${name}', '${email}', '${password}')`,
+        (error, rows, fields) => {
             if (error) return res.json({ error });
             res.json(rows);
         });
@@ -76,8 +82,8 @@ app.put('/user', (req, res) => {
         password        
     } = req.query;
     if (name && isEmail(email) && password) {
-        res.header('Access-Control-Allow-Origin', '*');
-        connection.query(`UPDATE users SET email='${email}' WHERE name='${name}' AND password='${password}'`, (error, rows, fields) => {
+        connection.query(`UPDATE users SET email='${email}' WHERE name='${name}' AND password='${password}'`,
+        (error, rows, fields) => {
             if (error) return res.json({ error });
             res.json(rows);
         });

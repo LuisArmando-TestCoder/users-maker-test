@@ -9,7 +9,7 @@
 </head>
 <body>
     <section id="log">
-        <h1>Init - User management</h1>
+        <h1>AKA App | Users management</h1>
         <div class="log__options">
             <a href="#in" class="options__option"> Sign in </a>
             <a href="#up" class="options__option"> Or register </a>
@@ -20,10 +20,8 @@
         <form>
             <label for="in-email">Email</label>
             <input type="email" name="email" id="in-email">
-            <label for="in-name">Name</label>
-            <input type="name" name="name" id="in-name">
             <label for="in-password">Password</label>
-            <input type="password" password="password" id="in-password">
+            <input type="password" name="password" id="in-password">
             <p class="error-message"></p>
             <button type="submit" id="in-submit">Sign in</button>
             <a href="#up">Wanna make an account?</a>
@@ -32,12 +30,12 @@
     <section id="up">
         <h2>Sign up <sup>aka</sup> Register</h2>
         <form>
-            <label for="up-email">Email</label>
-            <input type="email" name="email" id="up-email">
             <label for="up-name">Name</label>
             <input type="name" name="name" id="up-name">
+            <label for="up-email">Email</label>
+            <input type="email" name="email" id="up-email">
             <label for="up-password">Password</label>
-            <input type="password" password="password" id="up-password">
+            <input type="password" name="password" id="up-password">
             <p class="error-message"></p>
             <button type="submit" id="up-submit">Sign up</button>
             <a href="#in">Wanna log in?</a>
@@ -48,20 +46,24 @@
             <div>
                 <button id="sign-out">Sign out</button>
                 <p class="error-message"></p>
-                <ul id="user"></ul>
+                <table id="user-info"></table>
                 <button id="delete-user">Delete your user</button>
             </div>
             <div>
                 <form>
-                    <label for="search-users-name">User</label>
+                    <label for="search-users-name">Look up for a user name</label>
                     <input type="search" name="name" id="search-users-name">
-                    <label for="search-users-email">Email</label>
-                    <input type="search" name="email" id="search-users-email">
                 </form>
-                <ul id="users"></ul>
+                <table id="users"></table>
             </div>
         </div>
     </section>
-    <script src="./js/sign.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/sign-in.js"></script>
+    <script src="./js/sign-up.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/put.js"></script>
+    <script src="./js/sign-out.js"></script>
+    <script src="./js/delete.js"></script>
 </body>
 </html>
