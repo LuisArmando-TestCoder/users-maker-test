@@ -1,0 +1,28 @@
+.form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 100px -35px #000;
+    width: 100vw;
+    max-width: 560px;
+}
+
+.form__label {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 5px;
+    opacity: 0.75;
+}
+
+.form__redirect {
+    display: block;
+    text-align: center;
+    opacity: 0.75;
+}
+
+.form__label, .form__redirect {
+    transition: 0.25s;
+    &:hover {
+        opacity: 1;
+    }
+}

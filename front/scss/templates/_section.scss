@@ -1,0 +1,11 @@
+.contain__section {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background: $normal;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+}

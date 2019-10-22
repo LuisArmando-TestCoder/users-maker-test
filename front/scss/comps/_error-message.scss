@@ -1,0 +1,15 @@
+.error-message:empty {
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+.error-message {
+    transition: 0.35s;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 14px;
+    color: $important;
+    box-shadow: 0 0 10px -5px #0008;
+    background: #f7f7f7;
+}

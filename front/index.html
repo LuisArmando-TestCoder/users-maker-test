@@ -5,59 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <section id="log">
-        <h1>AKA App | Users management</h1>
-        <div class="log__options">
-            <a href="#in" class="options__option"> Sign in </a>
-            <a href="#up" class="options__option"> Or register </a>
-        </div>
-    </section>
-    <section id="in">
-        <h2>Sign in <sup>aka</sup> Log in</h2>
-        <form>
-            <label for="in-email">Email</label>
-            <input type="email" name="email" id="in-email">
-            <label for="in-password">Password</label>
-            <input type="password" name="password" id="in-password">
-            <p class="error-message"></p>
-            <button type="submit" id="in-submit">Sign in</button>
-            <a href="#up">Wanna make an account?</a>
-        </form>
-    </section>
-    <section id="up">
-        <h2>Sign up <sup>aka</sup> Register</h2>
-        <form>
-            <label for="up-name">Name</label>
-            <input type="name" name="name" id="up-name">
-            <label for="up-email">Email</label>
-            <input type="email" name="email" id="up-email">
-            <label for="up-password">Password</label>
-            <input type="password" name="password" id="up-password">
-            <p class="error-message"></p>
-            <button type="submit" id="up-submit">Sign up</button>
-            <a href="#in">Wanna log in?</a>
-        </form>
-    </section>
-    <section id="dashboard">
-        <div class="details">
-            <div>
-                <button id="sign-out">Sign out</button>
+    <div class="contain">
+        <section class="contain__section" id="log">
+            <h1 class="title">
+                <strong class="title__app-name">AKA</strong>
+                Users management
+            </h1>
+            <div class="options">
+                <a href="#in" class="options__option"> Sign in </a>
+                <a href="#up" class="options__option"> Or register </a>
+            </div>
+        </section>
+        <section class="contain__section" id="in">
+            <h2 class="sub-title">Sign in <sup>aka</sup> Log in</h2>
+            <form class="form">
+                <label class="form__label" for="in-email">Email</label>
+                <input class="input--text-entry" type="email" name="email" id="in-email">
+                <label class="form__label" for="in-password">Password</label>
+                <input class="input--text-entry" type="password" name="password" id="in-password">
                 <p class="error-message"></p>
-                <table id="user-info"></table>
-                <button id="delete-user">Delete your user</button>
+                <a class="form__redirect" href="#up">Don't have an account?</a>
+                <button class="btn-submit" type="submit" id="in-submit">Sign in</button>
+            </form>
+        </section>
+        <section class="contain__section" id="up">
+            <h2 class="sub-title">Sign up <sup>aka</sup> Register</h2>
+            <form class="form">
+                <label class="form__label" for="up-name">Name</label>
+                <input class="input--text-entry" type="name" name="name" id="up-name">
+                <label class="form__label" for="up-email">Email</label>
+                <input class="input--text-entry" type="email" name="email" id="up-email">
+                <label class="form__label" for="up-password">Password</label>
+                <input class="input--text-entry" type="password" name="password" id="up-password">
+                <p class="error-message"></p>
+                <a class="form__redirect" href="#in">Have an account already?</a>
+                <button class="btn-submit" type="submit" id="up-submit">Sign up</button>
+            </form>
+        </section>
+        <section class="contain__section" id="dashboard">
+            <div class="details">
+                <div>
+                    <button class="btn-out" id="sign-out">Sign out</button>
+                    <p class="error-message"></p>
+                    <table class="table" id="user-info"></table>
+                </div>
+                <div>
+                    <form class="form">
+                        <label class="form__label" for="search-users-name">Look up for a user name</label>
+                        <input class="input--text-entry" type="search" name="name" id="search-users-name">
+                    </form>
+                    <table class="table" id="users"></table>
+                    <button class="btn-out btn-delete" id="delete-user">Delete your user</button>
+                </div>
             </div>
-            <div>
-                <form>
-                    <label for="search-users-name">Look up for a user name</label>
-                    <input type="search" name="name" id="search-users-name">
-                </form>
-                <table id="users"></table>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <script src="./js/utils.js"></script>
     <script src="./js/sign-in.js"></script>
     <script src="./js/sign-up.js"></script>

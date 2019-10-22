@@ -1,0 +1,34 @@
+html {
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+* {
+    font-family: $font-normal;
+}
+
+*::selection {
+    background: $important;
+    color: $normal;
+}
+
+*:focus {
+    outline-color: $highlight;
+}
+
+h1, h2, h3, h4, h5, h6, strong, sup, b {
+    font-family: $font-title;
+}
+
+a {
+    color: $highlight;
+}
+
+a:visited,
+a:focus {
+    color: $important;
+}
+
+a:hover {
+    text-decoration: none;
+}
